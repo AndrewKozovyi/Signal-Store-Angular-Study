@@ -1,0 +1,29 @@
+<main class="container">
+  <div class="controls">
+    <input class="input-field" placeholder="Search tickets..." type="text"/>
+    <select class="input-field">
+      <option>All Categories</option>
+      <option>Music</option>
+      <option>Tech</option>
+      <option>Art</option>
+    </select>
+  </div>
+
+  <div class="ticket-list">
+    @for (ticket of state.tickets(); track ticket.id) {
+      <div class="ticket-card" [routerLink]="['/ticket', ticket.id]">
+        <div class="ticket-image-container">
+          <img [src]="ticket.imageUrl" [alt]="ticket.title" class="ticket-image"/>
+        </div>
+        <div class="ticket-info">
+          <h3>{{ ticket.title }}</h3>
+          <p class="description">{{ ticket.description }}</p>
+          <div class="meta">
+            <span>📅 {{ ticket.date }}</span>
+            <span>📍 {{ ticket.place }}</span>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</main>

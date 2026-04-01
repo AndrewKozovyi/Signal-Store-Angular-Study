@@ -1,12 +1,13 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component, signal} from '@angular/core';
+import {RouterLink, RouterOutlet} from '@angular/router';
+import {CartComponent} from './components/cart/cart.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  templateUrl: 'app.html',
+  standalone: true,
+  imports: [RouterOutlet, RouterLink, CartComponent]
 })
-export class App {
-  protected readonly title = signal('signal-store-pdp');
+export class AppComponent {
+  cartCount = signal<number>(0);
 }

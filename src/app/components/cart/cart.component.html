@@ -1,0 +1,37 @@
+@if (false) {
+  <div class="cart-overlay"></div>
+  <div class="cart-dialog">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button class="close-btn">✕</button>
+    </div>
+
+    <div class="cart-items">
+      @if (!cart().length) {
+        <p class="empty-cart">Your cart is empty.</p>
+      }
+
+      @for (item of cart(); track item.ticket.id) {
+        <div class="cart-item">
+          <div class="item-info">
+            <h4>{{ item.ticket.title }}</h4>
+            <p>${{ item.ticket.price }}</p>
+          </div>
+          <div class="item-actions">
+            <button>-</button>
+            <span>{{ item.quantity }}</span>
+            <button>+</button>
+            <button class="delete-btn">🗑️</button>
+          </div>
+        </div>
+      }
+    </div>
+
+    @if (cart().length > 0) {
+      <div class="cart-footer">
+        <h3>Total: $0</h3>
+        <button class="btn primary-btn full-width">Checkout</button>
+      </div>
+    }
+  </div>
+}

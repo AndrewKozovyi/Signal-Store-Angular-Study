@@ -1,0 +1,22 @@
+<main class="container">
+  <button class="back-btn" routerLink="/">← Back to Tickets</button>
+
+  @if (ticket(); as t) {
+    <div class="pdp-card">
+      <img [src]="t.imageUrl" [alt]="t.title" class="pdp-image"/>
+      <div class="pdp-content">
+        <h2>{{ t.title }}</h2>
+        <p class="pdp-desc">{{ t.description }}</p>
+
+        <div class="pdp-details">
+          <p><strong>Date:</strong> {{ t.date }}</p>
+          <p><strong>Time:</strong> {{ t.time }}</p>
+          <p><strong>Place:</strong> {{ t.place }}</p>
+          <p class="price">${{ t.price }}</p>
+        </div>
+
+        <button class="btn primary-btn">Buy Ticket</button>
+      </div>
+    </div>
+  }
+</main>
