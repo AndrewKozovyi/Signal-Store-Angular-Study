@@ -1,6 +1,6 @@
-import {Component, signal} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {CartItem} from '../../models/ticket.model';
+import {TicketStore} from '../../stores/ticket-store/ticket.store';
 
 @Component({
   selector: 'app-cart',
@@ -9,5 +9,5 @@ import {CartItem} from '../../models/ticket.model';
   imports: [CommonModule]
 })
 export class CartComponent {
-  cart = signal<CartItem[]>([]);
+  store = inject(TicketStore)
 }

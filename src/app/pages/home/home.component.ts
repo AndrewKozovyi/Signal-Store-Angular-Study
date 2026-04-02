@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { StateService } from '../../services/state.service';
+import {TicketStore} from '../../stores/ticket-store/ticket.store';
 
 @Component({
   selector: 'app-home',
@@ -10,5 +10,5 @@ import { StateService } from '../../services/state.service';
   imports: [CommonModule, RouterLink]
 })
 export class HomeComponent {
-  state = inject(StateService);
+  store = inject(TicketStore)
 }

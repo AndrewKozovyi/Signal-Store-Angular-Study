@@ -1,7 +1,7 @@
-import { Component, inject, computed } from '@angular/core';
+import {Component, inject, computed, signal, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { StateService } from '../../services/state.service';
+import {TicketStore} from '../../stores/ticket-store/ticket.store';
 
 @Component({
   selector: 'app-ticket-detail',
@@ -9,10 +9,14 @@ import { StateService } from '../../services/state.service';
   standalone: true,
   imports: [CommonModule, RouterLink]
 })
-export class TicketDetailComponent {
+export class TicketDetailComponent implements OnInit {
   route = inject(ActivatedRoute);
-  state = inject(StateService);
+  store = inject(TicketStore)
 
-  ticketId = computed(() => this.route.snapshot.paramMap.get('id'));
-  ticket = computed(() => this.state.tickets().find(t => t.id === this.ticketId()));
+  ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.store.setCurrentTicketId(id);
+    }
+  }
 }

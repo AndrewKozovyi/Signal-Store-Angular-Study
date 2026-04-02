@@ -1,8 +1,8 @@
 <header class="header">
   <div class="header-content container">
     <h1 class="logo" routerLink="/">TicketApp</h1>
-    <button class="btn cart-btn">
-      Cart ({{ cartCount() }})
+    <button (click)="store.toggleCart(!store.isCartOpen())" class="btn cart-btn">
+      Cart ({{ store.cartCount() }})
     </button>
   </div>
 </header>

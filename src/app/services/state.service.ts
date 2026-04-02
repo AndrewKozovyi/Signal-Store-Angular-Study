@@ -4,7 +4,7 @@ import {Ticket} from '../models/ticket.model';
 @Injectable({providedIn: 'root'})
 export class StateService {
   // Hardcoded State
-  readonly tickets = signal<Ticket[]>([
+  private readonly tickets = signal<Ticket[]>([
     {
       id: '1',
       title: 'Summer Music Festival',
@@ -106,4 +106,8 @@ export class StateService {
       price: 45
     }
   ]);
+
+  public getTickets() {
+    return this.tickets();
+  }
 }
