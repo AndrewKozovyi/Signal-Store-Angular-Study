@@ -1,16 +1,15 @@
 <main class="container">
   <div class="controls">
-    <input class="input-field" placeholder="Search tickets..." type="text"/>
-    <select class="input-field">
-      <option>All Categories</option>
-      <option>Music</option>
-      <option>Tech</option>
-      <option>Art</option>
+    <input [(ngModel)]="text" class="input-field" placeholder="Search tickets..." type="text"/>
+    <select (change)="changeCategory($event)" class="input-field">
+      @for (item of store.categories(); track item.value) {
+        <option [value]="item.value">{{item?.name}}</option>
+      }
     </select>
   </div>
 
   <div class="ticket-list">
-    @for (ticket of store.tickets(); track ticket.id) {
+    @for (ticket of store.filteredTickets(); track ticket.id) {
       <div class="ticket-card" [routerLink]="['/ticket', ticket.id]">
         <div class="ticket-image-container">
           <img [src]="ticket.imageUrl" [alt]="ticket.title" class="ticket-image"/>
@@ -24,6 +23,9 @@
           </div>
         </div>
       </div>
+    }
+    @if (!store.filteredTickets().length) {
+      No Events
     }
   </div>
 </main>

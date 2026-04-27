@@ -13,7 +13,8 @@ export class StateService {
       time: '14:00',
       place: 'Central Park',
       imageUrl: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=1920&h=1080&q=80',
-      price: 75
+      price: 75,
+      category: 'music'
     },
     {
       id: '2',
@@ -23,7 +24,8 @@ export class StateService {
       time: '09:00',
       place: 'Expo Center',
       imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1920&h=1080&q=80',
-      price: 150
+      price: 150,
+      category: 'tech'
     },
     {
       id: '3',
@@ -33,7 +35,8 @@ export class StateService {
       time: '10:00',
       place: 'City Gallery',
       imageUrl: 'https://images.unsplash.com/photo-1531259683007-016a7b628fc3?auto=format&fit=crop&w=1920&h=1080&q=80',
-      price: 20
+      price: 20,
+      category: 'art'
     },
     {
       id: '4',
@@ -43,7 +46,8 @@ export class StateService {
       time: '17:00',
       place: 'Grand Hotel Ballroom',
       imageUrl: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1920&h=1080&q=80',
-      price: 95
+      price: 95,
+      category: 'food'
     },
     {
       id: '5',
@@ -53,7 +57,8 @@ export class StateService {
       time: '06:30',
       place: 'Downtown Square',
       imageUrl: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1920&h=1080&q=80',
-      price: 35
+      price: 35,
+      category: 'charity'
     },
     {
       id: '6',
@@ -63,7 +68,8 @@ export class StateService {
       time: '20:00',
       place: 'The Laugh Lounge',
       imageUrl: 'https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&w=1920&h=1080&q=80',
-      price: 25
+      price: 25,
+      category: 'comedy'
     },
     {
       id: '7',
@@ -73,7 +79,8 @@ export class StateService {
       time: '18:30',
       place: 'Riverside Amphitheater',
       imageUrl: 'https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=1920&h=1080&q=80',
-      price: 15
+      price: 15,
+      category: 'music'
     },
     {
       id: '8',
@@ -83,7 +90,8 @@ export class StateService {
       time: '18:00',
       place: 'Innovation Hub',
       imageUrl: 'https://assets-in.bmscdn.com/discovery-catalog/events/et00363690-wjeghaczkw-landscape.jpg',
-      price: 10
+      price: 10,
+      category: 'tech'
     },
     {
       id: '9',
@@ -93,7 +101,8 @@ export class StateService {
       time: '19:30',
       place: 'Historic Grand Theater',
       imageUrl: 'https://ticketor.net/usercontent/131/evf/1274.jpg',
-      price: 60
+      price: 60,
+      category: 'art'
     },
     {
       id: '10',
@@ -103,7 +112,8 @@ export class StateService {
       time: '11:00',
       place: 'Mega Arena',
       imageUrl: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1920&h=1080&q=80',
-      price: 45
+      price: 45,
+      category: 'tech'
     }
   ]);
 

@@ -7,9 +7,15 @@ export interface Ticket {
   place: string;
   imageUrl: string;
   price: number;
+  category: string;
 }
 
 export interface CartItem {
   ticket: Ticket;
   quantity: number;
+}
+
+export interface CategoryItem {
+  value: string;
+  name: string;
 }

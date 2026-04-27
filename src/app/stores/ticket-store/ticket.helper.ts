@@ -34,3 +34,15 @@ export function toggleCart(isOpen: boolean): PartialStateUpdater<TicketsSlice> {
     isCartOpen: isOpen
   })
 }
+
+export function updateTextFilter(text: string): PartialStateUpdater<TicketsSlice> {
+  return _ => ({
+    filterText: text
+  })
+}
+
+export function updateCategoryFilter(category: string): PartialStateUpdater<TicketsSlice> {
+  return _ => ({
+    category: category
+  })
+}
