@@ -1,25 +1,25 @@
-@if (store.isCartOpen()) {
-  <div (click)="store.toggleCart(false)" class="cart-overlay"></div>
+@if (cartStore.isCartOpen()) {
+  <div (click)="cartStore.toggleCart(false)" class="cart-overlay"></div>
   <div class="cart-dialog">
     <div class="cart-header">
       <h2>Your Cart</h2>
-      <button (click)="store.toggleCart(false)" class="close-btn">✕</button>
+      <button (click)="cartStore.toggleCart(false)" class="close-btn">✕</button>
     </div>
 
     <div class="cart-items">
-      @if (!store.cartCount()) {
+      @if (!cartStore.cartCount()) {
         <p class="empty-cart">Your cart is empty.</p>
       }
 
-      @for (item of store.cartTickets(); track item.ticket.id) {
+      @for (ticket of cartStore.cartTickets(); track ticket.id) {
         <div class="cart-item">
           <div class="item-info">
-            <h4>{{ item.ticket.title }}</h4>
-            <p>${{ item.ticket.price }}</p>
+            <h4>{{ ticket.title }}</h4>
+            <p>${{ ticket.price }}</p>
           </div>
           <div class="item-actions">
             <button>-</button>
-            <span>{{ item.quantity }}</span>
+            <span>{{ ticket.quantity }}</span>
             <button>+</button>
             <button class="delete-btn">🗑️</button>
           </div>
@@ -27,7 +27,7 @@
       }
     </div>
 
-    @if (store.cartCount()) {
+    @if (cartStore.cartCount()) {
       <div class="cart-footer">
         <h3>Total: $0</h3>
         <button class="btn primary-btn full-width">Checkout</button>

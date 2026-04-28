@@ -10,12 +10,9 @@ export interface Ticket {
   category: string;
 }
 
-export interface CartItem {
-  ticket: Ticket;
-  quantity: number;
-}
-
 export interface CategoryItem {
   value: string;
   name: string;
 }
+
+export type CartItem = Pick<Ticket, 'id' | 'title' | 'price'> & { quantity: number };
