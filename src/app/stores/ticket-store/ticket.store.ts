@@ -3,7 +3,7 @@ import {initialState} from './ticket.slice';
 import {computed, inject} from '@angular/core';
 import {StateService} from '../../services/state.service';
 import {setCurrentTicketId, updateCategoryFilter, updateTextFilter} from './ticket.helper';
-import {CategoryItem, Ticket} from '../../models/ticket.model';
+import {CartItem, CategoryItem, Ticket} from '../../models/ticket.model';
 import {CartStore} from '../cart-store/cart.store';
 
 export const TicketStore = signalStore(

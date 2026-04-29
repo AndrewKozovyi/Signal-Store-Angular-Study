@@ -18,10 +18,10 @@
             <p>${{ ticket.price }}</p>
           </div>
           <div class="item-actions">
-            <button>-</button>
+            <button (click)="cartStore.removeTicketFromCart(ticket)">-</button>
             <span>{{ ticket.quantity }}</span>
-            <button>+</button>
-            <button class="delete-btn">🗑️</button>
+            <button (click)="cartStore.addTicketToCart(ticket)">+</button>
+            <button (click)="cartStore.deleteTicketFromCart(ticket)" class="delete-btn">🗑️</button>
           </div>
         </div>
       }
@@ -29,8 +29,8 @@
 
     @if (cartStore.cartCount()) {
       <div class="cart-footer">
-        <h3>Total: $0</h3>
-        <button class="btn primary-btn full-width">Checkout</button>
+        <h3>Total: ${{cartStore.totalSum()}}</h3>
+        <button (click)="cartStore.checkout()" class="btn primary-btn full-width">Checkout</button>
       </div>
     }
   </div>
