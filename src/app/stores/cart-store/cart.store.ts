@@ -1,8 +1,8 @@
-import {patchState, signalStore, withComputed, withMethods, withState} from '@ngrx/signals';
-import {initialState} from './cart.slice';
+import {getState, patchState, signalStore, withComputed, withHooks, withMethods, withState} from '@ngrx/signals';
+import {CartSlice, initialState} from './cart.slice';
 import {CartItem, Ticket} from '../../models/ticket.model';
 import {addTicketToCart, checkout, deleteTicketFromCart, removeTicketFromCart, toggleCart} from './cart.helper';
-import {computed} from '@angular/core';
+import {computed, effect} from '@angular/core';
 
 export const CartStore = signalStore(
   { providedIn: 'root' },
@@ -30,5 +30,20 @@ export const CartStore = signalStore(
     removeTicketFromCart: (ticket: CartItem) => patchState(store, removeTicketFromCart(ticket.id)),
     deleteTicketFromCart: (ticket: CartItem) => patchState(store, deleteTicketFromCart(ticket.id)),
     checkout: () => patchState(store, checkout())
-  }))
+  })),
+  withHooks({
+    onInit(store) {
+      const stateJSON = localStorage.getItem('cart');
+      if (stateJSON) {
+        const state = JSON.parse(stateJSON) as CartSlice;
+        patchState(store, state)
+      }
+
+      effect(() => {
+        const state = getState(store);
+        const stateJSON = JSON.stringify(state);
+        localStorage.setItem('cart', stateJSON)
+      });
+    }
+  })
 )

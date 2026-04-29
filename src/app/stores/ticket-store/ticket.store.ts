@@ -1,6 +1,15 @@
-import {patchState, signalStore, withComputed, withHooks, withMethods, withProps, withState} from '@ngrx/signals';
-import {initialState} from './ticket.slice';
-import {computed, inject} from '@angular/core';
+import {
+  getState,
+  patchState,
+  signalStore,
+  withComputed,
+  withHooks,
+  withMethods,
+  withProps,
+  withState
+} from '@ngrx/signals';
+import {initialState, TicketsSlice} from './ticket.slice';
+import {computed, effect, inject} from '@angular/core';
 import {StateService} from '../../services/state.service';
 import {setCurrentTicketId, updateCategoryFilter, updateTextFilter} from './ticket.helper';
 import {CartItem, CategoryItem, Ticket} from '../../models/ticket.model';
@@ -69,6 +78,18 @@ export const TicketStore = signalStore(
   withHooks({
     onInit(store) {
       patchState(store, { tickets: store.stateService.getTickets()})
+
+      const stateJSON = localStorage.getItem('tickets');
+      if (stateJSON) {
+        const state = JSON.parse(stateJSON) as TicketsSlice;
+        patchState(store, state)
+      }
+
+      effect(() => {
+        const state = getState(store);
+        const stateJSON = JSON.stringify(state);
+        localStorage.setItem('tickets', stateJSON)
+      });
     }
   })
 )

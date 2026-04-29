@@ -1,7 +1,11 @@
 <main class="container">
   <div class="controls">
     <input [(ngModel)]="text" class="input-field" placeholder="Search tickets..." type="text"/>
-    <select (change)="changeCategory($event)" class="input-field">
+    <select
+      [ngModel]="store.category()"
+      (ngModelChange)="store.updateCategoryFilter($event)"
+      class="input-field"
+    >
       @for (item of store.categories(); track item.value) {
         <option [value]="item.value">{{item?.name}}</option>
       }

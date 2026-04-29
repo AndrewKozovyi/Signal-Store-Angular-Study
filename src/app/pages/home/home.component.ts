@@ -11,9 +11,8 @@ import {FormsModule} from '@angular/forms';
   imports: [CommonModule, RouterLink, FormsModule]
 })
 export class HomeComponent {
-  public readonly text = signal<string>('');
-
   public readonly store = inject(TicketStore)
+  public readonly text = signal<string>(this.store.filterText());
 
   constructor() {
     effect((onCleanup) => {
