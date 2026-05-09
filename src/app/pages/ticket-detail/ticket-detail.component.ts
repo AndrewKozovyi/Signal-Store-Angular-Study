@@ -1,7 +1,8 @@
-import {Component, inject, computed, signal, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import {TicketStore} from '../../stores/ticket-store/ticket.store';
+import {TicketStore} from '../../stores/ticket.store';
+import {CartStore} from '../../stores/cart.store';
 
 @Component({
   selector: 'app-ticket-detail',
@@ -11,12 +12,13 @@ import {TicketStore} from '../../stores/ticket-store/ticket.store';
 })
 export class TicketDetailComponent implements OnInit {
   route = inject(ActivatedRoute);
-  store = inject(TicketStore)
+  ticketStore = inject(TicketStore);
+  cartStore = inject(CartStore);
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.store.setCurrentTicketId(id);
+      this.ticketStore.setCurrentTicketId(id);
     }
   }
 }

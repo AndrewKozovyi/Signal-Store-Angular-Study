@@ -1,7 +1,8 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {CartComponent} from './components/cart/cart.component';
-import {CartStore} from './stores/cart-store/cart.store';
+import {CartStore} from './stores/cart.store';
+import {TicketStore} from './stores/ticket.store';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,11 @@ import {CartStore} from './stores/cart-store/cart.store';
   standalone: true,
   imports: [RouterOutlet, RouterLink, CartComponent]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   store = inject(CartStore)
+  ticketStore = inject(TicketStore);
+
+  ngOnInit() {
+    this.ticketStore.loadTickets();
+  }
 }

@@ -1,8 +1,8 @@
 import {Component, effect, inject, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import {TicketStore} from '../../stores/ticket-store/ticket.store';
 import {FormsModule} from '@angular/forms';
+import {TicketStore} from '../../stores/ticket.store';
 
 @Component({
   selector: 'app-home',

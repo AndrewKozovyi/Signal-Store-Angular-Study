@@ -1,7 +1,7 @@
 <main class="container">
   <button class="back-btn" routerLink="/">← Back to Tickets</button>
 
-  @if (store.currentTicket(); as t) {
+  @if (ticketStore.currentTicket(); as t) {
     <div class="pdp-card">
       <img [src]="t.imageUrl" [alt]="t.title" class="pdp-image"/>
       <div class="pdp-content">
@@ -15,7 +15,7 @@
           <p class="price">${{ t.price }}</p>
         </div>
 
-        <button (click)="store.addTicketToCart(t)" class="btn primary-btn">Buy Ticket</button>
+        <button (click)="cartStore.addTicketToCart(t)" class="btn primary-btn">Buy Ticket</button>
       </div>
     </div>
   }
